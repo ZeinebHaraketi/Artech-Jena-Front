@@ -10,9 +10,10 @@ function Payment() {
         const query = `
             PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
             PREFIX artechh: <http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#>
-            SELECT ?payment
+            SELECT ?payment ?order
             WHERE {
                 ?payment rdf:type artechh:Payment .
+                ?payment artechh:HasOrder ?order .
             }
         `;
 
@@ -22,43 +23,49 @@ function Payment() {
         })
         .then(res => {
             const results = res.data.results.bindings;
-            const paymentNames = results.map(item => {
-                // Extract only the last part of the URL to get the Payment name
-                return item.payment.value.split("#")[1];
+            const paymentData = results.map(item => {
+                const paymentName = item.payment.value.split("#")[1];
+                const orderName = item.order ? item.order.value.split("#")[1] : null;
+
+                return {
+                    paymentName,
+                    orderName,
+                };
             });
-            setPayments(paymentNames);
+            setPayments(paymentData);
         })
         .catch(err => console.error(err));
     }, []);
 
     return (
-       <>
-       <br></br>
-       <br></br>
-       <br></br>
-       <br></br>
-       <br></br>
-       <br></br>
-       <div className="table-container">
-
-       <Table className="type-table" responsive>
-       <thead className="table-header">
-                <tr>
-                    <th>Id</th>
-                    <th>Payment Name</th>
-                </tr>
-            </thead>
-            <tbody>
-                {payments.map((paymentName, index) => (
-                    <tr key={index}>
-                        <th scope="row">{index + 1}</th>
-                        <td>{paymentName}</td>
-                    </tr>
-                ))}
-            </tbody>
-        </Table>
-        </div>
-       </>
+        <>
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <div className="table-container">
+                <Table className="type-table" responsive>
+                    <thead className="table-header">
+                        <tr>
+                            <th>Id</th>
+                            <th>Payment Name</th>
+                            <th>Order Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {payments.map((payment, index) => (
+                            <tr key={index}>
+                                <th scope="row">{index + 1}</th>
+                                <td>{payment.paymentName}</td>
+                                <td>{payment.orderName}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </Table>
+            </div>
+        </>
     );
 }
 

@@ -55,7 +55,37 @@ var routes = [
     layout: "/admin",
   },
   
-  
+//   {
+//     path: "/users",
+//     name: "Users",
+//     icon: "nc-icon nc-single-02", // Use an appropriate icon for the dropdown
+//     // component: null, // No direct component for the dropdown
+//     layout: "/admin",
+//     children: [  // Introducing a 'children' property to hold the nested routes
+//         {
+//             path: "/client",
+//             name: "Clients",
+//             icon: "nc-icon nc-single-02",
+//             component: <Client />,
+//             layout: "/admin/users", // Note the updated layout
+//         },
+//         {
+//             path: "/galleryowner",
+//             name: "Gallery Owners",
+//             icon: "nc-icon nc-single-02",
+//             component: <GalleryOwner />,
+//             layout: "/admin/users", // Note the updated layout
+//         },
+//         {
+//             path: "/deliveryman",
+//             name: "Delivery Men",
+//             icon: "nc-icon nc-bus-front-12",
+//             component: <DeliveryMan />,
+//             layout: "/admin/users", // Note the updated layout
+//         }
+//     ]
+// },
+
   {
     path: "/galleryowner",
     name: "Gallery Owners",

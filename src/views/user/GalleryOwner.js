@@ -9,8 +9,8 @@ function GalleryOwner() {
 
 
 useEffect(() => {
-    const endpoint = 'http://localhost:3030/Artech/sparql';
-    const query = `
+  const endpoint = 'http://localhost:3030/Artech/sparql';
+  const query = `
       PREFIX artechh: <http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#>
       SELECT ?galleryOwner ?email ?address
       WHERE {

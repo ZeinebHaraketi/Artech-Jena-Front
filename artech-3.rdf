@@ -15,6 +15,29 @@
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#HasOrder -->
+
+    <owl:AnnotationProperty rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#HasOrder"/>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#qualifiedCardinality -->
+
+    <owl:AnnotationProperty rdf:about="http://www.w3.org/2002/07/owl#qualifiedCardinality"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
     // Object Properties
     //
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -475,6 +498,24 @@
     
 
 
+    <!-- http://org.semanticweb.owlapi/error#Error1 -->
+
+    <owl:Class rdf:about="http://org.semanticweb.owlapi/error#Error1"/>
+    
+
+
+    <!-- http://org.semanticweb.owlapi/error#Error2 -->
+
+    <owl:Class rdf:about="http://org.semanticweb.owlapi/error#Error2"/>
+    
+
+
+    <!-- http://org.semanticweb.owlapi/error#Error4 -->
+
+    <owl:Class rdf:about="http://org.semanticweb.owlapi/error#Error4"/>
+    
+
+
     <!-- http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#ArtExhibitionEvent -->
 
     <owl:Class rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#ArtExhibitionEvent">
@@ -902,13 +943,6 @@
         </owl:equivalentClass>
         <owl:equivalentClass>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#hasReviews"/>
-                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
-                <owl:onClass rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Product"/>
-            </owl:Restriction>
-        </owl:equivalentClass>
-        <owl:equivalentClass>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#hasStock"/>
                 <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
                 <owl:onClass rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Product"/>
@@ -1211,6 +1245,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Advanced_Art_Events">
         <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Event"/>
+        <artechh:IsRelatedTo rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#OnlineEvent"/>
     </owl:NamedIndividual>
     
 
@@ -1219,7 +1254,8 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Bilal">
         <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#DeliveryMan"/>
-		 <artechh:Tel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13579135</artechh:Tel>
+        <artechh:IsRelatedTo rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#thisismyfirstpost"/>
+        <artechh:Tel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">13579135</artechh:Tel>
         <artechh:address>Nabeul</artechh:address>
     </owl:NamedIndividual>
     
@@ -1229,6 +1265,10 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Boy_Bitten_by_a_Lizard_by_Michelangelo_Merisi_da_Caravaggio">
         <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Product"/>
+		<artechh:HasProductType rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#paintings"/>
+			        <artechh:hasReviews rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#2stars"/>
+
+
     </owl:NamedIndividual>
     
 
@@ -1237,7 +1277,8 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Burhan">
         <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#DeliveryMan"/>
-		 <artechh:Tel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12345678</artechh:Tel>
+        <artechh:IsRelatedTo rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Post4"/>
+        <artechh:Tel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12345678</artechh:Tel>
         <artechh:address>Bizerte</artechh:address>
     </owl:NamedIndividual>
     
@@ -1247,6 +1288,14 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Claude_Monet">
         <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#GalleryOwner"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Comment1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Comment1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Comments"/>
     </owl:NamedIndividual>
     
 
@@ -1263,7 +1312,8 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Dawoud">
         <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#DeliveryMan"/>
-		 <artechh:Tel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">55135845</artechh:Tel>
+        <artechh:IsRelatedTo rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Post5"/>
+        <artechh:Tel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">55135845</artechh:Tel>
         <artechh:address>Tunis Centre Ville</artechh:address>
     </owl:NamedIndividual>
     
@@ -1273,7 +1323,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Ebeid">
         <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#DeliveryMan"/>
-		 <artechh:Tel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">98357187</artechh:Tel>
+        <artechh:Tel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">98357187</artechh:Tel>
         <artechh:address>Ariana</artechh:address>
     </owl:NamedIndividual>
     
@@ -1308,7 +1358,7 @@
         <rdf:type>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#eventIsOrganizedBy"/>
-                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Event"/>
+                <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#GalleryOwner"/>
             </owl:Restriction>
         </rdf:type>
     </owl:NamedIndividual>
@@ -1369,14 +1419,6 @@
     
 
 
-    <!-- http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Fringe_festivals -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Fringe_festivals">
-        <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Event"/>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Gaddafi -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Gaddafi">
@@ -1405,6 +1447,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#John">
         <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Client"/>
+        <artechh:IsClient rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#OnlineEvent"/>
     </owl:NamedIndividual>
     
 
@@ -1413,6 +1456,9 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Lady_Lilith_by_Dante_Gabriel_Rossetti">
         <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Product"/>
+		<artechh:HasProductType rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#sculptures"/>
+	        <artechh:hasReviews rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#5stars"/>
+
     </owl:NamedIndividual>
     
 
@@ -1433,18 +1479,28 @@
     
 
 
-    <!-- http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Metal_Arts_Sculpture_Event -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Metal_Arts_Sculpture_Event">
-        <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Event"/>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Michelangelo -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Michelangelo">
         <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#GalleryOwner"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#MyPreOrder -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#MyPreOrder">
+        <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#PreOrder"/>
+        <artechh:HasProduct rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Product1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#MyPreOrder1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#MyPreOrder1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#PreOrder"/>
+        <artechh:HasProduct rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Lady_Lilith_by_Dante_Gabriel_Rossetti"/>
     </owl:NamedIndividual>
     
 
@@ -1481,14 +1537,6 @@
     
 
 
-    <!-- http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Photography_Event -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Photography_Event">
-        <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Event"/>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Post1 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Post1">
@@ -1501,6 +1549,7 @@
             </owl:Restriction>
         </rdf:type>
         <owl:sameAs rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Post2"/>
+        <artechh:HasComments rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#love_the_painting"/>
     </owl:NamedIndividual>
     
 
@@ -1515,7 +1564,26 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Post2">
         <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Posts"/>
+        <artechh:HasComments rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Comment1"/>
     </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Post4 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Post4"/>
+    
+
+
+    <!-- http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Post5 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Post5"/>
+    
+
+
+    <!-- http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Product -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Product"/>
     
 
 
@@ -1559,14 +1627,25 @@
                 <owl:allValuesFrom rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Product"/>
             </owl:Restriction>
         </rdf:type>
-        <owl:sameAs rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Produit2"/>
+        <owl:sameAs rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Product2"/>
+        <artechh:hasReviews rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Review1"/>
     </owl:NamedIndividual>
     
 
 
     <!-- http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Produit2 -->
 
-    <rdf:Description rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Produit2"/>
+    <rdf:Description rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Product2"/>
+    
+
+
+    <!-- http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Product2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Product2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Product"/>
+		<artechh:HasProductType rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#paintings"/>
+
+    </owl:NamedIndividual>
     
 
 
@@ -1578,10 +1657,30 @@
     
 
 
+    <!-- http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#ProductForPreOrder -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#ProductForPreOrder">
+        <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Product"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#ProductWithMultipleReviews -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#ProductWithMultipleReviews">
+        <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Product"/>
+        <artechh:hasReviews rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Review1"/>
+        <artechh:hasReviews rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Review2"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Produit2 -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Produit2">
         <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Product"/>
+	    <artechh:hasReviews rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Review1"/>
+
     </owl:NamedIndividual>
     
 
@@ -1594,10 +1693,27 @@
     
 
 
+    <!-- http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Review1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Review1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Review"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Review2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Review2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Review"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Saleh -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Saleh">
         <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#DeliveryMan"/>
+        <artechh:IsRelatedTo rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Post1"/>
         <artechh:Tel rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">12345678</artechh:Tel>
         <artechh:address>Tunis Centre Ville</artechh:address>
     </owl:NamedIndividual>
@@ -1626,10 +1742,14 @@
     
 
 
-    <!-- http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Specialty_Art_Events -->
+    <!-- http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#ShoppingCart1 -->
 
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Specialty_Art_Events">
-        <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Event"/>
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#ShoppingCart1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Cart"/>
+        <artechh:HasProduct rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Product1"/>
+        <artechh:HasProduct rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Product2"/>
+        <artechh:IntoCart rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Product1"/>
+        <artechh:IntoCart rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Product2"/>
     </owl:NamedIndividual>
     
 
@@ -1653,6 +1773,10 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Starry_Night_by_Vincent_van_Gogh">
         <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Product"/>
+	    <artechh:HasProductType rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#paintings"/>
+			        <artechh:hasReviews rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Review2"/>
+
+
     </owl:NamedIndividual>
     
 
@@ -1661,6 +1785,10 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#The_Last_Supper_by_Leonardo_da_Vinci">
         <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Product"/>
+		<artechh:HasProductType rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#paintings"/>
+			        <artechh:hasReviews rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#5stars"/>
+
+
     </owl:NamedIndividual>
     
 
@@ -1669,6 +1797,10 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#The_Ninth_Wave_by_Ivan_Aivazovsky">
         <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Product"/>
+		<artechh:HasProductType rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#paintings"/>
+			        <artechh:hasReviews rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Review1"/>
+
+
     </owl:NamedIndividual>
     
 
@@ -1677,6 +1809,9 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#The_Third_of_May_1808_by_Francisco_Goya">
         <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Product"/>
+		<artechh:HasProductType rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#paintings"/>
+	        <artechh:hasReviews rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#2stars"/>
+
     </owl:NamedIndividual>
     
 
@@ -1685,8 +1820,38 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#The_Tower_of_Babel_by_Pieter_Brueghel_the_Elder">
         <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Product"/>
+			    <artechh:HasProductType rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#sculptures"/>
+	        <artechh:hasReviews rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Review2"/>
+
     </owl:NamedIndividual>
     
+	<!-- Instances de la classe Shipping -->
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Free_Shipping_Promotion"/>
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Shipping2"/>
+<!-- Vous pouvez continuer à ajouter d'autres instances de Shipping si nécessaire -->
+
+<!-- Instance de la classe Cart -->
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#ShoppingCart1">
+    <!-- Relations du Cart aux Shippings -->
+    <artechh:IsRelatedTo rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Free_Shipping_Promotion"/>
+    <artechh:IsRelatedTo rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Standard_Shipping_for_Local_Orders"/>
+    <!-- Vous pouvez continuer à ajouter d'autres relations à d'autres instances de Shipping si nécessaire -->
+</owl:NamedIndividual>
+
+<!-- Instances de la classe Shipping -->
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Same-Day_Shipping"/>
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Free_Shipping_Promotion"/>
+<!-- Vous pouvez continuer à ajouter d'autres instances de Shipping si nécessaire -->
+
+<!-- Instance de la classe Cart -->
+<owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#order1">
+    <!-- Relations du Cart aux Shippings -->
+    <artechh:IsRelatedTo rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Same-Day_Shipping"/>
+    <artechh:IsRelatedTo rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Free_Shipping_Promotion"/>
+    <!-- Vous pouvez continuer à ajouter d'autres relations à d'autres instances de Shipping si nécessaire -->
+</owl:NamedIndividual>
+
+
 
 
     <!-- http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Vermeer -->
@@ -1701,6 +1866,8 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Water_Lilies_by_Claude_Monet">
         <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Product"/>
+			        <artechh:hasReviews rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Review1"/>
+
     </owl:NamedIndividual>
     
 
@@ -1709,6 +1876,8 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Woman_with_a_Parasol_by_Claude_Monet">
         <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Product"/>
+			        <artechh:hasReviews rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Review2"/>
+
     </owl:NamedIndividual>
     
 
@@ -1785,6 +1954,7 @@
             </owl:Restriction>
         </rdf:type>
         <owl:sameAs rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#event2"/>
+        <artechh:IsRelatedTo rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#ExhibitionEvent"/>
     </owl:NamedIndividual>
     
 
@@ -1799,6 +1969,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#event2">
         <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Event"/>
+        <artechh:IsRelatedTo rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#OnlineEvent"/>
     </owl:NamedIndividual>
     
 
@@ -1814,7 +1985,7 @@
     <!-- http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#lamis -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#lamis">
-        <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Client"/>
+        <artechh:IsClient rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#event2"/>
     </owl:NamedIndividual>
     
 
@@ -1904,6 +2075,8 @@
             </owl:Restriction>
         </rdf:type>
         <owl:sameAs rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#order2"/>
+        <artechh:HasProduct rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Product"/>
+        <artechh:IntoCart rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Product1"/>
     </owl:NamedIndividual>
     
 
@@ -1918,6 +2091,8 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#order2">
         <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Cart"/>
+        <artechh:HasProduct rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Product2"/>
+        <artechh:IntoCart rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Product2"/>
     </owl:NamedIndividual>
     
 
@@ -2029,6 +2204,7 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#tableau_mona_lisa">
         <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#PreOrder"/>
+        <artechh:HasProduct rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Product2"/>
     </owl:NamedIndividual>
     
 
@@ -2037,14 +2213,23 @@
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#tableau_picasso">
         <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#PreOrder"/>
+        <artechh:HasProduct rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Product1"/>
     </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#thisismyfirstpost -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#thisismyfirstpost"/>
     
 
 
     <!-- http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#100dt_has__been_payed! -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#100dt_has__been_payed!">
+        <rdf:type rdf:resource="http://org.semanticweb.owlapi/error#Error1"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Payment"/>
+        <artechh:HasOrder rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#tableau_mona_lisa"/>
     </owl:NamedIndividual>
     
 
@@ -2066,7 +2251,9 @@
     <!-- http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#200dt_has__been_payed! -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#200dt_has__been_payed!">
+        <rdf:type rdf:resource="http://org.semanticweb.owlapi/error#Error4"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Payment"/>
+        <artechh:HasOrder rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#tableau_picasso"/>
     </owl:NamedIndividual>
     
 
@@ -2082,7 +2269,9 @@
     <!-- http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#40dt_has__been_payed! -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#40dt_has__been_payed!">
+        <rdf:type rdf:resource="http://org.semanticweb.owlapi/error#Error2"/>
         <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Payment"/>
+        <artechh:HasOrder rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#ProductForPreOrder"/>
     </owl:NamedIndividual>
     
 
@@ -2101,27 +2290,20 @@
     
 
 
-    <!-- http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#50dt_has__been_payed! -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#50dt_has__been_payed!">
-        <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Payment"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#80dt_has__been_payed! -->
-
-    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#80dt_has__been_payed!">
-        <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#Payment"/>
-    </owl:NamedIndividual>
-    
-
-
     <!-- http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#davivinci_works_are_always_perfect! -->
 
     <owl:NamedIndividual rdf:about="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#davivinci_works_are_always_perfect!">
         <rdf:type rdf:resource="http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#ArtistReview"/>
     </owl:NamedIndividual>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </rdf:Description>
+    <rdf:Description>
+        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+    </rdf:Description>
     
 
 

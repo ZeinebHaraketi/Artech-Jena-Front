@@ -4,114 +4,94 @@ import { Table } from 'reactstrap';
 import './Product.css';
 
 function Product() {
-    const [products, setProducts] = useState([]);
-    const [productTypes, setProductTypes] = useState([]);
+    const [productData, setProductData] = useState([]);
 
+    useEffect(() => {
+        const endpoint = 'http://localhost:3030/Artech/sparql';
+        const query = `
+            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+            PREFIX artechh: <http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#>
+            SELECT ?product ?productType ?review
+            WHERE {
+                ?product rdf:type artechh:Product.
+                OPTIONAL {
+                    ?product artechh:hasReviews ?review.
+                }
+                ?product artechh:HasProductType ?productType.
+            }
+        `;
     
-
-    useEffect(() => {
-        const endpoint = 'http://localhost:3030/Artech/sparql';
-        const query = `
-            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-            PREFIX artechh: <http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#>
-            SELECT ?product
-            WHERE {
-                ?product rdf:type artechh:Product .
-            }
-        `;
-
         axios.get(endpoint, {
             params: { query, format: 'json' },
             headers: { Accept: 'application/sparql-results+json' }
         })
         .then(res => {
             const results = res.data.results.bindings;
-            const productNames = results.map(item => {
-                // Extrayez seulement la dernière partie de l'URL pour obtenir le nom du produit
-                return item.product.value.split("#")[1];
+            const productData = results.map(item => {
+                const productName = item.product.value.split("#")[1];
+                const productType = item.productType.value.split("#")[1];
+                const review = item.review ? item.review.value.split("#")[1] : 'No review available';
+                return {
+                    productName,
+                    productType,
+                    review,
+                };
             });
-            setProducts(productNames);
-        })
-        .catch(err => console.error(err));
-    }, []);
-
-    useEffect(() => {
-        const endpoint = 'http://localhost:3030/Artech/sparql';
-        const query = `
-            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-            PREFIX artechh: <http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#>
-            SELECT ?productType
-            WHERE {
-                ?productType rdf:type artechh:ProductType .
-            }
-        `;
-
-        axios.get(endpoint, {
-            params: { query, format: 'json' },
-            headers: { Accept: 'application/sparql-results+json' }
-        })
-        .then(res => {
-            const results = res.data.results.bindings;
-            const productTypeNames = results.map(item => {
-                // Extrayez seulement la dernière partie de l'URL pour obtenir le nom du type de produit
-                return item.productType.value.split("#")[1];
-            });
-            setProductTypes(productTypeNames);
+            setProductData(productData);
         })
         .catch(err => console.error(err));
     }, []);
 
     return (
-
-       <>
-       <br></br>
-       <br></br>
-       <br></br>
-       <br></br>
-       <br></br>
-       <div className="table-container">
-
-       <Table className="type-table" responsive>
-       <thead className="table-header">
-                <tr>
-                    <th>Id</th>
-                    <th>Product Type Name</th>
-                </tr>
-            </thead>
-            <tbody>
-                {productTypes.map((productTypeName, index) => (
-                    <tr key={index}>
-                        <th scope="row">{index + 1}</th>
-                        <td>{productTypeName}</td>
-                    </tr>
-                ))}
-            </tbody>
-        </Table>
-</div>
-       <br></br>
-       <br></br>
-       <div className="table-container">
-
-
-       <Table className="type-table">
-       <thead className="table-header">
-                <tr>
-                    <th>Id</th>
-                    <th>Product Name</th>
-                </tr>
-            </thead>
-            <tbody>
-                {products.map((productName, index) => (
-                    <tr key={index}>
-                        <th scope="row">{index + 1}</th>
-                        <td>{productName}</td>
-                    </tr>
-                ))}
-            </tbody>
-        </Table>
-
-        </div>
-       </>
+        <>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <br></br>
+            <div className="table-container">
+                <Table className="type-table" responsive>
+                    <thead className="table-header">
+                        <tr>
+                            <th>Id</th>
+                            <th>Product Name</th>
+                            <th>Product Type</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {productData.map((product, index) => (
+                            <tr key={index}>
+                                <th scope="row">{index + 1}</th>
+                                <td>{product.productName}</td>
+                                <td>{product.productType}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </Table>
+            </div>
+            <br></br>
+            <br></br>
+            <div className="table-container">
+                <Table className="type-table">
+                    <thead className="table-header">
+                        <tr>
+                            <th>Id</th>
+                            <th>Product Name</th>
+                            <th>Review</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {productData.map((product, index) => (
+                            <tr key={index}>
+                                <th scope="row">{index + 1}</th>
+                                <td>{product.productName}</td>
+                                <td>{product.review}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </Table>
+            </div>
+        </>
     );
 }
 

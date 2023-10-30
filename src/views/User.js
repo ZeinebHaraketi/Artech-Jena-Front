@@ -133,7 +133,7 @@ function User() {
                         </div>
                       </Col>
                       <Col md="7" xs="7">
-                        Creative Tim <br />
+                        Artech <br />
                         <span className="text-success">
                           <small>Available</small>
                         </span>

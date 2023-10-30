@@ -3,61 +3,89 @@ import axios from 'axios';
 import { Table } from 'reactstrap';
 
 function Post() {
-    const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState([]);
 
-    useEffect(() => {
-        const endpoint = 'http://localhost:3030/Artech/sparql';
-        const query = `
-            PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-            PREFIX owl: <http://www.w3.org/2002/07/owl#>
-            PREFIX artechh: <http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#>
-            SELECT ?post
-            WHERE {
-                ?post rdf:type artechh:Posts .
-            }
-        `;
+  useEffect(() => {
+    const endpoint = 'http://localhost:3030/Artech/sparql';
 
-        axios.get(endpoint, {
-            params: { query, format: 'json' },
-            headers: { Accept: 'application/sparql-results+json' }
-        })
-        .then(res => {
-            const results = res.data.results.bindings;
-            const postNames = results.map(item => {
-                // Extract only the last part of the URL to get the Post name
-                return item.post.value.split("#")[1];
-            });
-            setPosts(postNames);
-        })
-        .catch(err => console.error(err));
-    }, []);
+    const query1 = `
+    PREFIX artechh: <http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#>
+    PREFIX owl: <http://www.w3.org/2002/07/owl#>
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    
+        SELECT ?post
+        WHERE {
+            ?post rdf:type artechh:Posts.
+        }
+    `;
 
-    return (
-        <>
-        <br></br>
-        <br></br>
-        <br></br>
-        <br></br>
-        <div className="table-container">
+    const query2 = `
+    PREFIX artechh: <http://www.semanticweb.org/zeine/ontologies/2023/9/artechh#>
+    PREFIX owl: <http://www.w3.org/2002/07/owl#>
+    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+    
+    SELECT ?post ?comment
+    WHERE {
+      ?post rdf:type artechh:Posts.
+      ?post artechh:HasComments ?comment.
+    }
+    `;
+
+    // Make two separate requests for each query
+    axios.all([
+      axios.get(endpoint, { params: { query: query1, format: 'json' }, headers: { Accept: 'application/sparql-results+json' } }),
+      axios.get(endpoint, { params: { query: query2, format: 'json' }, headers: { Accept: 'application/sparql-results+json' } })
+    ])
+      .then(axios.spread((res1, res2) => {
+        const postsData = res1.data.results.bindings;
+        const commentsData = res2.data.results.bindings;
+
+        const combinedData = postsData.map(post => {
+          const postId = post.post.value.split("#")[1];
+          const comments = commentsData
+            .filter(comment => comment.post.value === post.post.value)
+            .map(comment => comment.comment ? comment.comment.value.split("#")[1] : null);
+          
+          return {
+            postId,
+            postName: postId, // Adjust this based on your actual data structure
+            comments
+          };
+        });
+
+        setPosts(combinedData);
+      }))
+      .catch(err => console.error(err));
+  }, []);
+
+  return (
+    <>
+      <br />
+      <br />
+      <br />
+      <br />
+      <div className="table-container">
         <Table className="type-table" responsive>
-        <thead className="table-header">
-                <tr>
-                    <th>Id</th>
-                    <th>Post Name</th>
-                </tr>
-            </thead>
-            <tbody>
-                {posts.map((postName, index) => (
-                    <tr key={index}>
-                        <th scope="row">{index + 1}</th>
-                        <td>{postName}</td>
-                    </tr>
-                ))}
-            </tbody>
+          <thead className="table-header">
+            <tr>
+              <th>Id</th>
+              <th>Post Name</th>
+              <th>Comments</th>
+            </tr>
+          </thead>
+          <tbody>
+            {posts.map((post, index) => (
+              <tr key={index}>
+                <th scope="row">{index + 1}</th>
+                <td>{post.postName}</td>
+                <td>{post.comments.join(', ')}</td>
+              </tr>
+            ))}
+          </tbody>
         </Table>
-        </div>
-        </>
-    );
+      </div>
+    </>
+  );
 }
 
 export default Post;
